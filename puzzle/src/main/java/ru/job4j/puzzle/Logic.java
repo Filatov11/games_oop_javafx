@@ -75,10 +75,10 @@ public class Logic {
                 if (table[row][row] != 1) { continue;}
                 else { int countI = 0; int countR = 0;
                  for (int i = 0; i != table.length;  i++ ) {
-                     if (table[i][row] == 1)   {countI++};
-                     if (table[row][i] == 1)   {countR++};
+                     if (table[i][row] == 1)   {countI++;}
+                     if (table[row][i] == 1)   {countR++;}
                  }
-                 if (countI || countR == table.length)   {result = true;}
+                 if (( countR == table.length) || ( countI == table.length))  {result = true;}
                     else {result = false;}
                 }
         }
