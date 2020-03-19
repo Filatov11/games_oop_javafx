@@ -21,20 +21,29 @@ public class Logic {
         this.figures[this.index++] = figure;
     }
 
+     public boolean checkWay(Cell source, Cell dest) {
+         boolean emptyWay = false;
+         int findInt;
+         Cell[] steps = this.figures[index].way(source, dest);
+         for (int i = 0; i < steps.length ; i++) {
+             findInt = findBy(steps[i]) ;
+                 if (findBy(steps[i]) != -1 )
+                 {  emptyWay = true;}
+                 else {emptyWay = false; break;}
+
+
+         }
+         return emptyWay;
+     }
+
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
-        boolean emptyWay = false;
+
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            for (int i = 0; i < steps.length-1 ; i++) {
-             for (int  j = 0 ; j < figures.length -1; j++) {
-                 if ((steps[i].x != figures[j].position().x) && (steps[i].y != figures[j].position().y))
-                 {emptyWay = true;} else {emptyWay = false;}
-             }
 
-            }
-            if ((steps.length > 0 && steps[steps.length - 1].equals(dest)) && emptyWay) {
+            if ((steps.length > 0 && steps[steps.length - 1].equals(dest)) && checkWay( source,  dest)) {
                 rst = true;
                 this.figures[index] = this.figures[index].copy(dest);
             }
