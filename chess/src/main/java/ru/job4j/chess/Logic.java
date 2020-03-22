@@ -22,14 +22,14 @@ public class Logic {
     }
 
      public boolean checkWay(Cell source, Cell dest) {
-         boolean emptyWay = false;
+         boolean emptyWay = true;
          int findInt;
          Cell[] steps = this.figures[index].way(source, dest);
          for (int i = 0; i < steps.length ; i++) {
              findInt = findBy(steps[i]) ;
-                 if (findBy(steps[i]) != -1 )
-                 {  emptyWay = true;}
-                 else {emptyWay = false; break;}
+                 if (findInt != -1 )
+                 {  emptyWay = false; break;}
+                 else {emptyWay = true;}
 
 
          }
